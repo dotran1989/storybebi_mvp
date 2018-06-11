@@ -1,0 +1,24 @@
+_ Authentication FireBase
++ Email
++ Facebook
++ Google
+
+_ Action:
++ SignUp
++ Login
++ Logout
++ Forgot Password
+
+_ User details
+_ Category
+_ List movies
+_ Movies details
+_ Play movie
+_ Rate movie, comment
+
+_ Library & tech:
++ MVP
++ Retrofit, RxJava, Picasso
++ Interface callback
++ Memory leak
++ Refactoring

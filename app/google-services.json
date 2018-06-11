@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "192882934241",
+    "firebase_url": "https://fir-authenication-mvp.firebaseio.com",
+    "project_id": "fir-authenication-mvp",
+    "storage_bucket": "fir-authenication-mvp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192882934241:android:f82ea24c43c9d027",
+        "android_client_info": {
+          "package_name": "bebi.story.cuongduong.storybebi_mvp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192882934241-eg863gul5u0htrrc9fj7nmrh7na9msfh.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "192882934241-eg863gul5u0htrrc9fj7nmrh7na9msfh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkZgKDr87jPtwrAmK1R7udiV_qT03nXNY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
