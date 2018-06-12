@@ -1,10 +1,10 @@
 _ Authentication FireBase
-+ Email
++ Email -> ok
 + Facebook
 + Google
 
 _ Action:
-+ SignUp
++ SignUp -> ok
 + Login
 + Logout
 + Forgot Password
@@ -17,9 +17,9 @@ _ Play movie
 _ Rate movie, comment
 
 _ Library & tech:
-+ MVP
++ MVP -> ok
 + Retrofit, RxJava, Picasso
-+ Interface callback
++ Interface callback -> ok
 + Memory leak
 + Refactoring
 + Generic type

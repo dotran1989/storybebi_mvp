@@ -16,7 +16,7 @@ public class RegistrationPresenterImpl implements RegistrationContract.Presenter
 
     @Override
     public void register(Activity activity, String username, String password) {
-        mRegistrationInteractor.performFirebaseRegistration(activity, username, password);
+        mRegistrationInteractor.performFireBaseRegistration(activity, username, password);
     }
 
     @Override

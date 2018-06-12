@@ -18,7 +18,7 @@ public class RegistrationInteractorImpl implements RegistrationContract.Interact
     }
 
     @Override
-    public void performFirebaseRegistration(Activity activity, String email, String password) {
+    public void performFireBaseRegistration(Activity activity, String email, String password) {
         FirebaseAuth.getInstance()
                 .createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {

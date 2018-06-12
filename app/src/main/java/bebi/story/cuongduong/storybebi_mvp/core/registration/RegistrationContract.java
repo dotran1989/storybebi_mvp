@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseUser;
 public interface RegistrationContract {
     interface View {
         void onRegistrationSuccess(FirebaseUser firebaseUser);
+
         void onRegistrationFailure(String message);
     }
 
@@ -15,11 +16,12 @@ public interface RegistrationContract {
     }
 
     interface Interactor {
-        void performFirebaseRegistration(Activity activity, String email, String password);
+        void performFireBaseRegistration(Activity activity, String email, String password);
     }
 
     interface onRegistrationListener {
         void onSuccess(FirebaseUser firebaseUser);
+
         void onFailure(String message);
     }
 }

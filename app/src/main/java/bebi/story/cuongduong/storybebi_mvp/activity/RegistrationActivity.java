@@ -1,12 +1,14 @@
 package bebi.story.cuongduong.storybebi_mvp.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +26,8 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     EditText edtPassword;
     @BindView(R.id.btn_register)
     Button btnRegister;
+    @BindView(R.id.tv_login)
+    TextView btnLogin;
 
     private RegistrationContract.Presenter mRegistrationPresenter;
     ProgressDialog mProgressDialog;
@@ -40,14 +44,14 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         mProgressDialog.setMessage("Please wait, Adding profile to database.");
 
         btnRegister.setOnClickListener(this);
-
+        btnLogin.setOnClickListener(this);
 
     }
 
     @Override
     public void onRegistrationSuccess(FirebaseUser firebaseUser) {
         mProgressDialog.dismiss();
-        Toast.makeText(getApplicationContext(), "Sucessfully Registered", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Successfully Registered", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -63,9 +67,15 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
                 checkRegistrationDetails();
                 break;
             case R.id.tv_login:
+                navigateToLoginActivity();
                 break;
         }
 
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 
     private void checkRegistrationDetails() {
