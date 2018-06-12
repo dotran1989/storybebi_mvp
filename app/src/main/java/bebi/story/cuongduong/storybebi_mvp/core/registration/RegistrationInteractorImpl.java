@@ -8,12 +8,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegistrationInteractor implements RegistrationContract.Interactor{
+public class RegistrationInteractorImpl implements RegistrationContract.Interactor{
 
-    private static final String TAG = RegistrationInteractor.class.getSimpleName();
+    private static final String TAG = RegistrationInteractorImpl.class.getSimpleName();
     private RegistrationContract.onRegistrationListener mOnRegistrationListener;
 
-    public RegistrationInteractor(RegistrationContract.onRegistrationListener onRegistrationListener) {
+    public RegistrationInteractorImpl(RegistrationContract.onRegistrationListener onRegistrationListener) {
         mOnRegistrationListener = onRegistrationListener;
     }
 
