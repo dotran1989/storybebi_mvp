@@ -14,6 +14,10 @@ public interface RegistrationContract {
         void register(Activity activity, String username, String password);
     }
 
+    interface Interactor {
+        void performFirebaseRegistration(Activity activity, String email, String password);
+    }
+
     interface onRegistrationListener {
         void onSuccess(FirebaseUser firebaseUser);
         void onFailure(String message);

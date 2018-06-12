@@ -22,3 +22,4 @@ _ Library & tech:
 + Interface callback
 + Memory leak
 + Refactoring
++ Generic type
