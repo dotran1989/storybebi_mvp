@@ -1,6 +1,7 @@
 package bebi.story.cuongduong.storybebi_mvp.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     private LoginContract.Presenter mLoginPresenter;
     ProgressDialog mProgressDialog;
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, LoginActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,14 +73,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 checkLoginDetails();
                 break;
             case R.id.tv_register:
-                navigateToRegistrationActivity();
+                RegistrationActivity.start(getApplicationContext());
                 break;
         }
-    }
-
-    private void navigateToRegistrationActivity() {
-        Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
-        startActivity(intent);
     }
 
     private void checkLoginDetails() {

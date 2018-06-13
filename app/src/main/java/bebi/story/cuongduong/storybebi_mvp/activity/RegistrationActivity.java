@@ -1,6 +1,7 @@
 package bebi.story.cuongduong.storybebi_mvp.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,11 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
     private RegistrationContract.Presenter mRegistrationPresenter;
     ProgressDialog mProgressDialog;
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, RegistrationActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +74,10 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
                 checkRegistrationDetails();
                 break;
             case R.id.tv_login:
-                navigateToLoginActivity();
+                LoginActivity.start(getApplicationContext());
                 break;
         }
 
-    }
-
-    private void navigateToLoginActivity() {
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
     }
 
     private void checkRegistrationDetails() {

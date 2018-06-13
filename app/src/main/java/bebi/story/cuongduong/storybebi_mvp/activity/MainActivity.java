@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        FirebaseUser currentUser = getIntent().getParcelableExtra("currentUser");
+        FirebaseUser currentUser = getIntent().getParcelableExtra(AppConstants.PARCELABLE_CURRENT_USER);
         Log.d(TAG, "currentUser: " + currentUser.getEmail());
 
         StringBuilder builder = new StringBuilder();
