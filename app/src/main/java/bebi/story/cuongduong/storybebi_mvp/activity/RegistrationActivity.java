@@ -52,13 +52,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     public void onRegistrationSuccess(FirebaseUser firebaseUser) {
         mProgressDialog.dismiss();
         Toast.makeText(getApplicationContext(), "Successfully Registered", Toast.LENGTH_SHORT).show();
-        navigateToMainActivity(firebaseUser);
-    }
-
-    private void navigateToMainActivity(FirebaseUser firebaseUser) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("currentUser", firebaseUser);
-        startActivity(intent);
+        MainActivity.start(getApplicationContext(), firebaseUser);
     }
 
     @Override

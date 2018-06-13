@@ -1,5 +1,8 @@
 package bebi.story.cuongduong.storybebi_mvp.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseUser;
 
 import bebi.story.cuongduong.storybebi_mvp.R;
+import bebi.story.cuongduong.storybebi_mvp.constants.AppConstants;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutContract;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutPresenterImpl;
 import butterknife.BindView;
@@ -25,6 +29,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtHello;
     @BindView(R.id.btn_logout)
     TextView btnLogOut;
+
+    public static void start(Context context, Parcelable parcelable) {
+        Intent starter = new Intent(context, MainActivity.class);
+        starter.putExtra(AppConstants.PARCELABLE_CURRENT_USER, parcelable);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

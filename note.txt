@@ -5,8 +5,8 @@ _ Authentication FireBase
 
 _ Action:
 + SignUp -> ok
-+ Login
-+ Logout
++ Login -> ok
++ Logout -> ok
 + Forgot Password
 
 _ User details

@@ -51,19 +51,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void onLoginSuccess(FirebaseUser firebaseUser) {
         mProgressDialog.dismiss();
         Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
-        navigateToMainActivity(firebaseUser);
+        MainActivity.start(getApplicationContext(), firebaseUser);
     }
 
     @Override
     public void onLoginFailure(String message) {
         mProgressDialog.dismiss();
         Toast.makeText(getApplicationContext(), "Failure Login", Toast.LENGTH_SHORT).show();
-    }
-
-    private void navigateToMainActivity(FirebaseUser firebaseUser) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("currentUser", firebaseUser);
-        startActivity(intent);
     }
 
     @Override
