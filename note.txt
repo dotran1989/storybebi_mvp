@@ -10,7 +10,7 @@ _ Action:
 + Forgot Password
 
 _ User details
-_ Category
+_ Categories
 _ List movies
 _ Movies details
 _ Play movie
@@ -23,3 +23,9 @@ _ Library & tech:
 + Memory leak
 + Refactoring
 + Generic type
+
+_ ToDo:
++ Master details
+
+
+gradlew assembleDebug --info

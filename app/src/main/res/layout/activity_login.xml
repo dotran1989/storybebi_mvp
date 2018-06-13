@@ -18,7 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="Email Address"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:text="cuong@gmail.com"/>
 
     <EditText
         android:id="@+id/password_login"
@@ -26,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:text="123456"/>
 
     <LinearLayout
         android:layout_width="match_parent"

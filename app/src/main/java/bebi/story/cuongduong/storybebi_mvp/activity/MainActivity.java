@@ -3,6 +3,7 @@ package bebi.story.cuongduong.storybebi_mvp.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,8 +17,6 @@ import bebi.story.cuongduong.storybebi_mvp.R;
 import bebi.story.cuongduong.storybebi_mvp.constants.AppConstants;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutContract;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutPresenterImpl;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, LogOutContract.View{
 
@@ -25,10 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private LogOutContract.Presenter mLogOutPresenter;
 
-    @BindView(R.id.hello)
-    TextView txtHello;
-    @BindView(R.id.btn_logout)
-    TextView btnLogOut;
+    private TextView txtHello;
+    private TextView btnLogOut;
+    private NavigationView naviView;
+    private View header;
 
     public static void start(Context context, Parcelable parcelable) {
         Intent starter = new Intent(context, MainActivity.class);
@@ -40,7 +39,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
+        naviView = findViewById(R.id.nav_view);
+        header = naviView.getHeaderView(0);
+        txtHello = header.findViewById(R.id.hello);
+        btnLogOut = header.findViewById(R.id.btn_logout);
 
         FirebaseUser currentUser = getIntent().getParcelableExtra(AppConstants.PARCELABLE_CURRENT_USER);
         Log.d(TAG, "currentUser: " + currentUser.getEmail());
