@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView btnLogOut;
     private NavigationView naviView;
     private View header;
+    private Toolbar toolbar;
 
     public static void start(Context context, Parcelable parcelable) {
         Intent starter = new Intent(context, MainActivity.class);
@@ -40,11 +44,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initViews();
+        setActionBar();
+        sayHelloCurrentUser();
+
+        btnLogOut.setOnClickListener(this);
+        mLogOutPresenter = new LogOutPresenterImpl(this);
+    }
+
+    private void initViews() {
         naviView = findViewById(R.id.nav_view);
         header = naviView.getHeaderView(0);
         txtHello = header.findViewById(R.id.hello);
         btnLogOut = header.findViewById(R.id.btn_logout);
+    }
 
+    private void setActionBar() {
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Home");
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toogle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.setDrawerListener(toogle);
+        toogle.syncState();
+    }
+
+    private void sayHelloCurrentUser() {
         FirebaseUser currentUser = getIntent().getParcelableExtra(AppConstants.PARCELABLE_CURRENT_USER);
         Log.d(TAG, "currentUser: " + currentUser.getEmail());
 
@@ -53,10 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.append(" ");
         builder.append(currentUser.getEmail());
         txtHello.setText(builder.toString());
-
-        btnLogOut.setOnClickListener(this);
-
-        mLogOutPresenter = new LogOutPresenterImpl(this);
     }
 
     @Override

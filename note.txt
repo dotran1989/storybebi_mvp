@@ -26,6 +26,8 @@ _ Library & tech:
 
 _ ToDo:
 + Master details
++ ActionBar
 
 
 gradlew assembleDebug --info
+
