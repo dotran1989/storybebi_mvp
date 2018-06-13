@@ -31,3 +31,14 @@ _ ToDo:
 
 gradlew assembleDebug --info
 
+_ Categories:
++ id
++ name
+
+_ Video:
++ id
++ categoryId
++ title
++ description
++ imageUrl
++ length
