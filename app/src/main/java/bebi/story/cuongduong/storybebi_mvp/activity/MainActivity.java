@@ -24,6 +24,7 @@ import bebi.story.cuongduong.storybebi_mvp.constants.AppConstants;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutContract;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutPresenterImpl;
 import bebi.story.cuongduong.storybebi_mvp.model.Category;
+import bebi.story.cuongduong.storybebi_mvp.rest.model.ApiResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -92,19 +93,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getListCategories() {
-        Call<List<Category>> call = App.getRestClient().getApiService().getCategories();
-        call.enqueue(new Callback<List<Category>>() {
+        Call<ApiResponse> call = App.getRestClient().getApiService().getCategories();
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 Log.d(TAG, "message: " + response.message());
                 Log.d(TAG, "toString: " + response.toString());
 
                 TextView textView = findViewById(R.id.txt_test);
-                textView.setText(response.body().toString());
+                textView.setText(response.body().getCategories().size());
             }
 
             @Override
-            public void onFailure(Call<List<Category>> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 TextView textView = findViewById(R.id.txt_test);
                 textView.setText("Wrong: " + t.getMessage());
             }
