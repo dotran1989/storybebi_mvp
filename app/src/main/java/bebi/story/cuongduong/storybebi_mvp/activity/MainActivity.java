@@ -16,20 +16,19 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import bebi.story.cuongduong.storybebi_mvp.R;
 import bebi.story.cuongduong.storybebi_mvp.app.App;
 import bebi.story.cuongduong.storybebi_mvp.constants.AppConstants;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutContract;
 import bebi.story.cuongduong.storybebi_mvp.core.logout.LogOutPresenterImpl;
-import bebi.story.cuongduong.storybebi_mvp.model.Category;
-import bebi.story.cuongduong.storybebi_mvp.rest.model.ApiResponse;
+import bebi.story.cuongduong.storybebi_mvp.model.CategoriesItem;
+
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, LogOutContract.View{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, LogOutContract.View {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -93,23 +92,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getListCategories() {
-        Call<ApiResponse> call = App.getRestClient().getApiService().getCategories();
-        call.enqueue(new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                Log.d(TAG, "message: " + response.message());
-                Log.d(TAG, "toString: " + response.toString());
+        Call<ArrayList<CategoriesItem>> call = App.getRestClient().getApiService().getCategories();
+        call.enqueue(new Callback<ArrayList<CategoriesItem>>() {
+                 @Override
+                 public void onResponse(Call<ArrayList<CategoriesItem>> call, retrofit2.Response<ArrayList<CategoriesItem>> response) {
+                     Log.d(TAG, "response code: " + response.code());
+                     if (response.isSuccessful()) {
+                         ArrayList<CategoriesItem> categories = response.body();
+                         Log.d(TAG, "size: " + categories.size());
+//                         TextView textView = findViewById(R.id.txt_test);
+//                         textView.setText("size: " + categories.size());
+                     }
+                 }
 
-                TextView textView = findViewById(R.id.txt_test);
-                textView.setText(response.body().getCategories().size());
-            }
+                 @Override
+                 public void onFailure(Call<ArrayList<CategoriesItem>> call, Throwable t) {
+//                     TextView textView = findViewById(R.id.txt_test);
+//                     textView.setText("Wrong: " + t.getMessage());
 
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                TextView textView = findViewById(R.id.txt_test);
-                textView.setText("Wrong: " + t.getMessage());
-            }
-        });
+                     Log.d(TAG, "onFailure: " + t.getMessage());
+                 }
+             }
+        );
 
     }
 

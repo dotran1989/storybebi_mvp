@@ -23,6 +23,7 @@ _ Library & tech:
 + Memory leak
 + Refactoring
 + Generic type
++ Generate from JSON to POJO -> ok
 
 _ ToDo:
 + Master details
@@ -31,7 +32,7 @@ _ ToDo:
 
 gradlew assembleDebug --info
 
-_ Categories:
+_ Category:
 + id
 + name
 
@@ -42,3 +43,14 @@ _ Video:
 + description
 + imageUrl
 + length
+
+categories: [
+	{
+		id: 1,
+		name: truyen co tich VN
+	},
+	{
+		id: 2,
+		name: truyen co Grimii
+	}
+]
