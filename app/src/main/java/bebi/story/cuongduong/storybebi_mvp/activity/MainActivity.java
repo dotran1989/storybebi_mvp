@@ -3,13 +3,17 @@ package bebi.story.cuongduong.storybebi_mvp.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +32,7 @@ import bebi.story.cuongduong.storybebi_mvp.model.CategoriesItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, LogOutContract.View {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, LogOutContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -78,11 +82,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         finish();
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+        return false;
+    }
+
     private void initViews() {
         naviView = findViewById(R.id.nav_view);
         header = naviView.getHeaderView(0);
         txtHello = header.findViewById(R.id.hello);
         btnLogOut = header.findViewById(R.id.btn_logout);
+
+        naviView.setNavigationItemSelectedListener(this);
     }
 
     private void setActionBar() {
@@ -111,22 +123,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getListCategories() {
         Call<ArrayList<CategoriesItem>> call = App.getRestClient().getApiService().getCategories();
         call.enqueue(new Callback<ArrayList<CategoriesItem>>() {
-                 @Override
-                 public void onResponse(Call<ArrayList<CategoriesItem>> call, retrofit2.Response<ArrayList<CategoriesItem>> response) {
-                     Log.d(TAG, "response code: " + response.code());
-                     if (response.isSuccessful()) {
-                         categories = response.body();
-                         Log.d(TAG, "size: " + categories.size());
+                         @Override
+                         public void onResponse(Call<ArrayList<CategoriesItem>> call, retrofit2.Response<ArrayList<CategoriesItem>> response) {
+                             Log.d(TAG, "response code: " + response.code());
+                             if (response.isSuccessful()) {
+                                 categories = response.body();
+                                 Log.d(TAG, "size: " + categories.size());
+
+                                 addMenuItemInNavMenuDrawer(categories);
+                             }
+                         }
+
+                         @Override
+                         public void onFailure(Call<ArrayList<CategoriesItem>> call, Throwable t) {
+                             Log.d(TAG, "onFailure: " + t.getMessage());
+                         }
                      }
-                 }
-
-                 @Override
-                 public void onFailure(Call<ArrayList<CategoriesItem>> call, Throwable t) {
-                     Log.d(TAG, "onFailure: " + t.getMessage());
-                 }
-             }
         );
-
     }
 
+    private void addMenuItemInNavMenuDrawer(ArrayList<CategoriesItem> categories) {
+        Menu menu = naviView.getMenu();
+        Menu subMenu = menu.addSubMenu("Story BeBi");
+
+        for (int i = 0; i < categories.size(); i++) {
+            subMenu.add(categories.get(i).getName());
+        }
+
+        naviView.invalidate();
+    }
 }

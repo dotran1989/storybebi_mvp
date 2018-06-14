@@ -10,7 +10,7 @@ _ Action:
 + Forgot Password
 
 _ User details
-_ Categories
+_ Categories -> ok
 _ List movies
 _ Movies details
 _ Play movie
@@ -18,18 +18,16 @@ _ Rate movie, comment
 
 _ Library & tech:
 + MVP -> ok
-+ Retrofit, RxJava, Picasso
++ Retrofit -> ok
++ RxJava
++ Picasso
 + Interface callback -> ok
 + Memory leak
 + Refactoring
 + Generic type
 + Generate from JSON to POJO -> ok
 
-_ ToDo:
-+ Master details
-+ ActionBar
-
-
+_ Debug
 gradlew assembleDebug --info
 
 _ Category:
