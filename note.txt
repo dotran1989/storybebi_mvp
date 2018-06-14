@@ -44,13 +44,36 @@ _ Video:
 + imageUrl
 + length
 
-categories: [
-	{
-		id: 1,
-		name: truyen co tich VN
-	},
-	{
-		id: 2,
-		name: truyen co Grimii
-	}
-]
+
+06-14 14:30:10.586 21980-22037/bebi.story.cuongduong.storybebi_mvp D/OkHttp: <-- 200 https://my-json-server.typicode.com/dotran1989/storybebi_api/categories (1532ms)
+06-14 14:30:10.587 21980-22037/bebi.story.cuongduong.storybebi_mvp D/OkHttp: date: Thu, 14 Jun 2018 07:30:10 GMT
+    content-type: application/json; charset=utf-8
+    set-cookie: __cfduid=dd9f5fbe050b3b492746f8e28c5ffffdf1528961409; expires=Fri, 14-Jun-19 07:30:09 GMT; path=/; domain=.typicode.com; HttpOnly
+    x-powered-by: Express
+    vary: Origin, Accept-Encoding
+06-14 14:30:10.588 21980-22037/bebi.story.cuongduong.storybebi_mvp D/OkHttp: access-control-allow-credentials: true
+    cache-control: no-cache
+06-14 14:30:10.589 21980-22037/bebi.story.cuongduong.storybebi_mvp D/OkHttp: pragma: no-cache
+    expires: -1
+    x-content-type-options: nosniff
+06-14 14:30:10.590 21980-22037/bebi.story.cuongduong.storybebi_mvp D/OkHttp: etag: W/"a2-5ZjpbiF4Qg5hPvwDLebfCPfqSSI"
+    via: 1.1 vegur
+    expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+    server: cloudflare
+    cf-ray: 42ab170a6d633409-HKG
+06-14 14:30:10.595 21980-22037/bebi.story.cuongduong.storybebi_mvp D/OkHttp: [
+      {
+        "id": 1,
+        "name": "Truyen co tich VN"
+      },
+06-14 14:30:10.596 21980-22037/bebi.story.cuongduong.storybebi_mvp D/OkHttp:   {
+        "id": 2,
+        "name": "Truyen co Grim"
+      },
+      {
+        "id": 3,
+        "name": "Truyen co Andersen"
+      }
+    ]
+    <-- END HTTP (162-byte body)
+06-14 14:30:10.603 21980-21980/bebi.story.cuongduong.storybebi_mvp D/MainActivity: response code: 200

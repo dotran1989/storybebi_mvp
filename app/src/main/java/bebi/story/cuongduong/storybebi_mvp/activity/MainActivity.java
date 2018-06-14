@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View header;
     private Toolbar toolbar;
 
+    ArrayList<CategoriesItem> categories;
+
     public static void start(Context context, Parcelable parcelable) {
         Intent starter = new Intent(context, MainActivity.class);
         starter.putExtra(AppConstants.PARCELABLE_CURRENT_USER, parcelable);
@@ -59,6 +61,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLogOutPresenter = new LogOutPresenterImpl(this);
 
         getListCategories();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_logout:
+                mLogOutPresenter.logOut();
+                break;
+        }
+    }
+
+    @Override
+    public void onLogOutSuccess() {
+        Toast.makeText(MainActivity.this, "Log out", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     private void initViews() {
@@ -98,18 +115,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  public void onResponse(Call<ArrayList<CategoriesItem>> call, retrofit2.Response<ArrayList<CategoriesItem>> response) {
                      Log.d(TAG, "response code: " + response.code());
                      if (response.isSuccessful()) {
-                         ArrayList<CategoriesItem> categories = response.body();
+                         categories = response.body();
                          Log.d(TAG, "size: " + categories.size());
-//                         TextView textView = findViewById(R.id.txt_test);
-//                         textView.setText("size: " + categories.size());
                      }
                  }
 
                  @Override
                  public void onFailure(Call<ArrayList<CategoriesItem>> call, Throwable t) {
-//                     TextView textView = findViewById(R.id.txt_test);
-//                     textView.setText("Wrong: " + t.getMessage());
-
                      Log.d(TAG, "onFailure: " + t.getMessage());
                  }
              }
@@ -117,18 +129,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_logout:
-                mLogOutPresenter.logOut();
-                break;
-        }
-    }
-
-    @Override
-    public void onLogOutSuccess() {
-        Toast.makeText(MainActivity.this, "Log out", Toast.LENGTH_SHORT).show();
-        finish();
-    }
 }
