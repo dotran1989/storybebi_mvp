@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         );
     }
 
+    // add menu item
     private void addMenuItemInNavMenuDrawer(ArrayList<CategoriesItem> categories) {
         Menu menu = naviView.getMenu();
         Menu subMenu = menu.addSubMenu("Story BeBi");
